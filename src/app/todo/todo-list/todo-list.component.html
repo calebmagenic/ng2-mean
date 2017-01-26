@@ -1,7 +1,7 @@
 <app-todo-state-menu (onToggle)="onToggle($event)"></app-todo-state-menu>
 <div class="todo-list" *ngIf="showActive">
   <div class="todo-list-group" *ngFor="let todo of activeTodos">
-    <app-todo [todo]="todo" (onSelect)="onSelect($event)"></app-todo>
+    <app-todo [todo]="todo" (onSelect)="onSelect($event)" (onCancel)="onCancel($event)" (onSave)="onSave($event)"></app-todo>
   </div>
 </div>
 <div class="todo-list" *ngIf="!showActive">

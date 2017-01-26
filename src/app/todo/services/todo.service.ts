@@ -23,13 +23,13 @@ export class TodoService extends HttpService {
 
   item(todoId: string): Promise<Todo> {
     var params = this.getParams(todoId);
-    return this.get<Todo>("", params);
+    return this.get<Todo>(todoId);
   }
 
   save(todo: Todo): Promise<Todo[]> {
     if(todo._id) {
       var params = this.getParams(todo._id);
-      return this.put<Todo[]>("", todo, params);
+      return this.put<Todo[]>(todo._id, todo);
     } else {
       return this.post<Todo[]>("", todo);
     } 
@@ -37,7 +37,7 @@ export class TodoService extends HttpService {
 
   remove(todoId: string): Promise<Todo[]> {
     var params = this.getParams(todoId);
-    return this.delete("", params);
+    return this.delete(todoId);
   }
 
   private getParams(todoId: string): URLSearchParams {

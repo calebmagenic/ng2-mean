@@ -40,7 +40,7 @@ router.post('/', function (req, res) {
             return res.send(err);
         }
 
-        Todo.find({}, function (err, todos) {
+        Todo.find(function (err, todos) {
             if(err) {
                 return res.send(err);
             }
@@ -57,7 +57,7 @@ router.put('/:id', function (req, res) {
             return res.send(err);
         }
 
-        Todo.find({}, function (err, todos) {
+        Todo.find(function (err, todos) {
             if(err) {
                 return res.send(err);
             }
@@ -74,7 +74,7 @@ router.delete('/:id', function (req, res) {
             return res.send(err);
         }
 
-        Todo.find({}, function (err, todos) {
+        Todo.find(function (err, todos) {
             if(err) {
                 return res.send(err);
             }

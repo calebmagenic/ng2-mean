@@ -37,10 +37,23 @@ export class TodoListComponent implements OnInit {
 
   onToggle(showActive: Boolean) {
     this.showActive = showActive;
+    this.selectedTodo = null;
   }
 
   onSelect(todo: Todo) {
     this.selectedTodo = todo;
+  }
+
+  onSave(todo: Todo) {
+    this.service.save(todo)
+      .then(todos => this.todos = todos)
+      .then(todos => this.filterResults(todos))
+      .catch(err => this.handleSaveError(err));
+  }
+
+  handleSaveError(reason: any) {
+    console.log("Failed to save todo");
+    console.log(reason);
   }
 
 }

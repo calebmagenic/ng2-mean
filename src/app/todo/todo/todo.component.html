@@ -1,7 +1,23 @@
-<div class="todo" (click)="select($event)">
-  <input type="hidden" value={{todo._id}} />
-  <div class="todo-operations">
-    <input type="checkbox" checked={{todo.done}} /> Finished
+<div class="todo" (click)="select($event)" [class.todo-edit-mode]="editMode" [class.todo-selected]="selected">
+  <div class="todo-view" *ngIf="!editMode">
+    <input type="hidden" value={{todo._id}} />
+    <div class="todo-operations" *ngIf="!todo.done">
+      <div class="todo-edit-toggle" (click)="toggleMode(true)">Edit</div>
+    </div>
+    <div class="todo-text">{{todo.text}}</div>
   </div>
-  <div class="todo-text">{{todo.text}}</div>
+  <div class="todo-edit" *ngIf="editMode">
+    <div class="todo-operations">
+      <div class="todo-edit-toggle" (click)="toggleMode(false)">Save</div>
+      <div class="todo-edit-cancel" (click)="toggleMode(true)">Cancel</div>
+    </div>
+    <form>
+      <input type="checkbox" [(ngModel)]="todo.done" [ngModelOptions]="{standalone: true}" /> Finished
+      <label>Text</label>
+      <input type="text" [(ngModel)]="todo.text" [ngModelOptions]="{standalone: true}" />
+      <label>Description</label>
+      <textarea [(ngModel)]="todo.description" [ngModelOptions]="{standalone: true}"></textarea>
+    </form>
+  </div>
+  <span>{{todo | json}}</span>
 </div>
