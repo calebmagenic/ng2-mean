@@ -32,16 +32,32 @@ export class TodoListComponent implements OnInit {
   }
 
   setSelectedItem() {
-    this.selectedTodo = (this.activeTodos && this.activeTodos.length) ? this.activeTodos[0] : null;
+    if(this.showActive) {
+      this.selectedTodo = (this.activeTodos && this.activeTodos.length) ? this.activeTodos[0] : null;
+    } else {
+      this.selectedTodo = (this.completedTodos && this.completedTodos.length) ? this.completedTodos[0] : null;
+    }
   }
 
   onToggle(showActive: Boolean) {
     this.showActive = showActive;
-    this.selectedTodo = null;
+    this.setSelectedItem();
   }
 
   onSelect(todo: Todo) {
     this.selectedTodo = todo;
+  }
+
+  onCreate() {
+    this.todos.push(new Todo(null, "New Item", "A new item", false));
+    this.filterResults(this.todos);
+  }
+
+  onDelete(todo: Todo) {
+    this.service.remove(todo._id)
+      .then(todos => this.todos = todos)
+      .then(todos => this.filterResults(todos))
+      .catch(err => this.handleDeleteError(err));
   }
 
   onSave(todo: Todo) {
@@ -52,7 +68,12 @@ export class TodoListComponent implements OnInit {
   }
 
   handleSaveError(reason: any) {
-    console.log("Failed to save todo");
+    console.log("Failed to save todo:");
+    console.log(reason);
+  }
+
+  handleDeleteError(reason: any) {
+    console.log("Failed to delete todo:");
     console.log(reason);
   }
 

@@ -10,7 +10,7 @@ $ npm install -g angular-cli
 
 Clone the repo
 ```bash
-$ git clone https://github.com/gangachris/ng2-mean.git
+$ git clone https://github.com/calebmagenic/ng2-mean.git
 $ cd ng2-mean
 ```
 
@@ -19,7 +19,17 @@ Install dependencies
 $ npm install
 ```
 
-Run the app
+Run mongo
+```bash
+$ npm run mongo
+```
+
+Run the server
 ```bash
 $ npm run build
+```
+
+Run the web app
+```bash
+$ npm run start
 ```

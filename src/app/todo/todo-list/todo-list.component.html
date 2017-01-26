@@ -1,12 +1,12 @@
-<app-todo-state-menu (onToggle)="onToggle($event)"></app-todo-state-menu>
+<app-todo-state-menu (onToggle)="onToggle($event)" (onCreate)="onCreate()"></app-todo-state-menu>
 <div class="todo-list" *ngIf="showActive">
   <div class="todo-list-group" *ngFor="let todo of activeTodos">
-    <app-todo [todo]="todo" (onSelect)="onSelect($event)" (onCancel)="onCancel($event)" (onSave)="onSave($event)"></app-todo>
+    <app-todo [todo]="todo" (onSelect)="onSelect($event)" (onCancel)="onSelect($event)" (onDelete)="onDelete($event)" (onSave)="onSave($event)"></app-todo>
   </div>
 </div>
 <div class="todo-list" *ngIf="!showActive">
   <div class="todo-list-group" *ngFor="let todo of completedTodos">
-    <app-todo [todo]="todo" (onSelect)="onSelect($event)"></app-todo>
+    <app-todo [todo]="todo" (onSelect)="onSelect($event)" (onDelete)="onDelete($event)"></app-todo>
   </div>
 </div>
 <div class="todo-detail-pane">

@@ -29,9 +29,9 @@ export class TodoService extends HttpService {
   save(todo: Todo): Promise<Todo[]> {
     if(todo._id) {
       var params = this.getParams(todo._id);
-      return this.put<Todo[]>(todo._id, todo);
+      return this.put<Todo[], Todo>(todo._id, todo);
     } else {
-      return this.post<Todo[]>("", todo);
+      return this.post<Todo[], Todo>("", todo);
     } 
   }
 

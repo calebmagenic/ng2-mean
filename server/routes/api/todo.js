@@ -34,7 +34,8 @@ router.get('/:id', function (req, res) {
 router.post('/', function (req, res) {
     Todo.create({
         text: req.body.text,
-        done: false
+        description: req.body.description,
+        done: !!req.body.done
     }, function (err, todo) {
         if(err) {
             return res.send(err);

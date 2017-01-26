@@ -12,19 +12,19 @@ export class HttpService {
     }
 
     protected get<TResponse>(action: string, params?: URLSearchParams): Promise<TResponse> {
-        return this.getOrDelete(action, RequestMethod.Get, "get", params);
+        return this.getOrDelete<TResponse>(action, RequestMethod.Get, "get", params);
 	}
 
-	protected post<TResponse>(action: string, body: any, params?: URLSearchParams): Promise<TResponse> {
-        return this.postOrPut(action, body, RequestMethod.Post, 'post', params);
+	protected post<TResponse, TRequest>(action: string, body: any, params?: URLSearchParams): Promise<TResponse> {
+        return this.postOrPut<TResponse, TRequest>(action, body, RequestMethod.Post, 'post', params);
     }
 
-    protected put<TResponse>(action: string, body: any, params?: URLSearchParams): Promise<TResponse> {
-        return this.postOrPut(action, body, RequestMethod.Put, 'put', params);
+    protected put<TResponse, TRequest>(action: string, body: any, params?: URLSearchParams): Promise<TResponse> {
+        return this.postOrPut<TResponse, TRequest>(action, body, RequestMethod.Put, 'put', params);
     }
 
     protected delete<TResponse>(action: string, params?: URLSearchParams): Promise<TResponse> {
-        return this.getOrDelete(action, RequestMethod.Delete, "delete", params);
+        return this.getOrDelete<TResponse>(action, RequestMethod.Delete, "delete", params);
     }
 
     private getOrDelete<TResponse>(action: string, method: RequestMethod, methodString: string, params?: URLSearchParams): Promise<TResponse> {

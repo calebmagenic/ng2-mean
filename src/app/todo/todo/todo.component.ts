@@ -22,11 +22,14 @@ export class TodoComponent implements OnInit {
   onSelect = new EventEmitter<Todo>();
   @Output()
   onCancel = new EventEmitter<Todo>();
+  @Output()
+  onDelete = new EventEmitter<Todo>();
   selected: boolean;
 
   @Output()
   onSave = new EventEmitter<Todo>();
 
+  @Input()
   editMode: Boolean = false;
 
   ngOnInit() {
@@ -35,7 +38,7 @@ export class TodoComponent implements OnInit {
   select($event) {
     this.onSelect.emit(this.todo);
     this.selected = !this.selected;
-    this.previousTodo = this.todo;
+    this.previousTodo = Object.assign({}, this.todo);
   }
 
   toggleMode(modeOnly: boolean) {
@@ -48,6 +51,10 @@ export class TodoComponent implements OnInit {
     }
 
     this.editMode = !this.editMode;
+  }
+
+  delete() {
+    this.onDelete.emit(this.todo);
   }
 
 }

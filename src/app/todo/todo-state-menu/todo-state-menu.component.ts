@@ -12,6 +12,9 @@ export class TodoStateMenuComponent implements OnInit {
   @Output()
   onToggle = new EventEmitter<Boolean>();
 
+  @Output()
+  onCreate = new EventEmitter();
+
   showActive: Boolean;
 
   ngOnInit() {
@@ -20,6 +23,10 @@ export class TodoStateMenuComponent implements OnInit {
   toggle(showActive: Boolean) {
     this.onToggle.emit(showActive);
     this.showActive = showActive;
+  }
+
+  createNew() {
+    this.onCreate.emit();
   }
 
 }

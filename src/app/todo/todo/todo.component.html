@@ -1,8 +1,9 @@
 <div class="todo" (click)="select($event)" [class.todo-edit-mode]="editMode" [class.todo-selected]="selected">
   <div class="todo-view" *ngIf="!editMode">
     <input type="hidden" value={{todo._id}} />
-    <div class="todo-operations" *ngIf="!todo.done">
-      <div class="todo-edit-toggle" (click)="toggleMode(true)">Edit</div>
+    <div class="todo-operations">
+      <div class="todo-edit-toggle" (click)="toggleMode(true)" *ngIf="!todo.done">Edit</div>
+      <div class="todo-delete" (click)="delete()">Delete</div>
     </div>
     <div class="todo-text">{{todo.text}}</div>
   </div>
