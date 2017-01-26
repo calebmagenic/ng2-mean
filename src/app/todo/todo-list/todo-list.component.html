@@ -1,5 +1,14 @@
-<div class="todo-list">
-  <div class="todo-list-group" *ngFor="let todo of todos">
-    <app-todo [todo]="todo"></app-todo>
+<app-todo-state-menu (onToggle)="onToggle($event)"></app-todo-state-menu>
+<div class="todo-list" *ngIf="showActive">
+  <div class="todo-list-group" *ngFor="let todo of activeTodos">
+    <app-todo [todo]="todo" (onSelect)="onSelect($event)"></app-todo>
   </div>
+</div>
+<div class="todo-list" *ngIf="!showActive">
+  <div class="todo-list-group" *ngFor="let todo of completedTodos">
+    <app-todo [todo]="todo" (onSelect)="onSelect($event)"></app-todo>
+  </div>
+</div>
+<div class="todo-detail-pane">
+  <app-todo-detail [todo]="selectedTodo"></app-todo-detail>
 </div>

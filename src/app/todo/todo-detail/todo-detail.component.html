@@ -1,3 +1,8 @@
-<p>
-  todo-detail works!
-</p>
+<div class="todo-detail">
+  <div class="todo-description" *ngIf="todo">
+    {{todo.description}}
+  </div>
+  <div class="todo-description" *ngIf="!todo">
+    Please select or create a todo.
+  </div>
+</div>

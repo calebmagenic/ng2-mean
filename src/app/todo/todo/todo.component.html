@@ -1,5 +1,7 @@
-<div class="todo">
+<div class="todo" (click)="select($event)">
   <input type="hidden" value={{todo._id}} />
+  <div class="todo-operations">
+    <input type="checkbox" checked={{todo.done}} /> Finished
+  </div>
   <div class="todo-text">{{todo.text}}</div>
-  <div class="todo-description">{{todo.description}}</div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { TodoService } from '../services/todo.service';
@@ -16,8 +16,15 @@ export class TodoComponent implements OnInit {
   @Input()
   todo: Todo;
 
+  @Output()
+  onSelect = new EventEmitter<Todo>();
+
   ngOnInit() {
     
+  }
+
+  select($event) {
+    this.onSelect.emit(this.todo);
   }
 
 }

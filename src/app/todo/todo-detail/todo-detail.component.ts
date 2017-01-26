@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TodoService } from '../services/todo.service';
@@ -13,11 +13,12 @@ export class TodoDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private service: TodoService) { }
 
+  @Input()
   todo: Todo;
 
   ngOnInit() {
-    let id = this.route.snapshot.params['id'];
-    this.service.item(id).then(todo => this.todo = todo);
   }
+
+  
 
 }
