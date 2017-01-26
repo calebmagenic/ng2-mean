@@ -1,5 +1,6 @@
-# MeanApp
+# NG2 MEAN
 
+A MEAN stack with MongoDB, Express.js, Angular 2, and Node.js
 App to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
 
 ## Set up.
