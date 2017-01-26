@@ -15,7 +15,7 @@ export class TodoStateMenuComponent implements OnInit {
   @Output()
   onCreate = new EventEmitter();
 
-  showActive: Boolean;
+  showActive: Boolean = true;
 
   ngOnInit() {
   }

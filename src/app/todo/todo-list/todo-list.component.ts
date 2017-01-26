@@ -39,6 +39,10 @@ export class TodoListComponent implements OnInit {
     }
   }
 
+  isSelected(todo: Todo) {
+    return this.selectedTodo === todo;
+  }
+
   onToggle(showActive: Boolean) {
     this.showActive = showActive;
     this.setSelectedItem();

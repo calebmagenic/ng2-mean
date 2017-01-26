@@ -1,8 +1,8 @@
 <div class="todo-state-menu">
-  <div class="todo-state-active" (click)="toggle(true)">
+  <div class="todo-state-active" (click)="toggle(true)" [class.todo-state-selected]="showActive">
     <span>Active</span>
   </div>
-  <div class="todo-state-completed" (click)="toggle(false)">
+  <div class="todo-state-completed" (click)="toggle(false)" [class.todo-state-selected]="!showActive">
     <span>Completed</span>
   </div>
   <div class="todo-add" (click)="createNew()">

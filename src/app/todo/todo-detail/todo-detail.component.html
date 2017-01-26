@@ -1,8 +1,13 @@
 <div class="todo-detail">
-  <div class="todo-description" *ngIf="todo">
-    {{todo.description}}
+  <div class="todo-detail-header">
+    {{header}}
   </div>
-  <div class="todo-description" *ngIf="!todo">
-    Please select or create a todo.
+  <div class="todo-description">
+    <div class="todo-description-text" *ngIf="todo">
+      {{todo.description}}
+    </div>
+    <div class="todo-description-text" *ngIf="!todo">
+      Please select or create a todo.
+    </div>
   </div>
 </div>

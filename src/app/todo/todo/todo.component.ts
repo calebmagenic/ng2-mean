@@ -24,7 +24,9 @@ export class TodoComponent implements OnInit {
   onCancel = new EventEmitter<Todo>();
   @Output()
   onDelete = new EventEmitter<Todo>();
-  selected: boolean;
+
+  @Input()
+  selected: boolean = false;
 
   @Output()
   onSave = new EventEmitter<Todo>();

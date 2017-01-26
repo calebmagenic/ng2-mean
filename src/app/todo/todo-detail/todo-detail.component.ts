@@ -16,6 +16,9 @@ export class TodoDetailComponent implements OnInit {
   @Input()
   todo: Todo;
 
+  @Input()
+  header: String;
+
   ngOnInit() {
   }
 

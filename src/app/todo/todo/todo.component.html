@@ -12,13 +12,16 @@
       <div class="todo-edit-toggle" (click)="toggleMode(false)">Save</div>
       <div class="todo-edit-cancel" (click)="toggleMode(true)">Cancel</div>
     </div>
-    <form>
+    <form class="todo-form">
       <input type="checkbox" [(ngModel)]="todo.done" [ngModelOptions]="{standalone: true}" /> Finished
-      <label>Text</label>
-      <input type="text" [(ngModel)]="todo.text" [ngModelOptions]="{standalone: true}" />
-      <label>Description</label>
-      <textarea [(ngModel)]="todo.description" [ngModelOptions]="{standalone: true}"></textarea>
+      <div class="form-group">
+        <label>Text</label>
+        <input type="text" [(ngModel)]="todo.text" [ngModelOptions]="{standalone: true}" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea [(ngModel)]="todo.description" [ngModelOptions]="{standalone: true}"></textarea>
+      </div>
     </form>
   </div>
-  <span>{{todo | json}}</span>
 </div>
