@@ -3,13 +3,13 @@
 A Todo app to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
 
 ## MEAN Stack
-MongoDB: [https://docs.mongodb.com/manual/introduction/]
+MongoDB: https://docs.mongodb.com/manual/introduction/
 
-Express.js: [http://expressjs.com/]
+Express.js: http://expressjs.com/
 
-Angular 2: [http://angular.io]
+Angular 2: http://angular.io
 
-Node.js: [https://nodejs.org]
+Node.js: https://nodejs.org
 
 ## Set up
 Make sure you have angular cli installed.
