@@ -1,9 +1,11 @@
 # NG2 MEAN
 
-A MEAN stack with MongoDB, Express.js, Angular 2, and Node.js
-App to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
+A Todo app to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
 
-## Set up.
+## MEAN Stack
+MongoDB, Express.js, Angular 2, and Node.js
+
+## Set up
 Make sure you have angular cli installed.
 ```bash
 $ npm install -g angular-cli
