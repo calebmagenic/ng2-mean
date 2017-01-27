@@ -2,7 +2,7 @@
 
 A Todo app to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
 
-## MEAN Stack
+## MEAN Stack Prerequisites
 MongoDB: https://docs.mongodb.com/manual/introduction/
 
 Express.js: http://expressjs.com/
