@@ -1,0 +1,8 @@
+
+.generate-monochrome-todo-palette(@rgba-default, @rgba-light, @contrast) {
+    @todo-color-light: @rgba-light;
+    @todo-color-dark: darken(@todo-color-light, 10%);
+    @todo-color-default: @rgba-default;
+    @todo-color-high-contrast: lighten(@todo-color-dark, @contrast);
+}
+

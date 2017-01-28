@@ -9,7 +9,10 @@ export class AppComponent implements OnInit {
 
   constructor() { }
 
+  theme: string;
+
   ngOnInit() {
+    this.theme = "default-mono-theme";
   }
 
 }

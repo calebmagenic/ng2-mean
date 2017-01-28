@@ -5,22 +5,22 @@
       <div class="todo-edit-toggle" (click)="toggleMode(true)" *ngIf="!todo.done">Edit</div>
       <div class="todo-delete" (click)="delete()">Delete</div>
     </div>
-    <div class="todo-text">{{todo.text}}</div>
+    <div class="todo-text-region todo-text">{{todo.text}}</div>
   </div>
   <div class="todo-edit" *ngIf="editMode">
     <div class="todo-operations">
       <div class="todo-edit-toggle" (click)="toggleMode(false)">Save</div>
       <div class="todo-edit-cancel" (click)="toggleMode(true)">Cancel</div>
     </div>
-    <form class="todo-form">
-      <input type="checkbox" [(ngModel)]="todo.done" [ngModelOptions]="{standalone: true}" /> Finished
+    <form class="todo-text-region todo-form">
+      <input class="todo-form-checkbox" type="checkbox" [(ngModel)]="todo.done" [ngModelOptions]="{standalone: true}" /> Finished
       <div class="form-group">
-        <label>Text</label>
-        <input type="text" [(ngModel)]="todo.text" [ngModelOptions]="{standalone: true}" />
+        <label class="todo-form-text">Text</label>
+        <input class="todo-form-input" type="text" [(ngModel)]="todo.text" [ngModelOptions]="{standalone: true}" />
       </div>
       <div class="form-group">
-        <label>Description</label>
-        <textarea [(ngModel)]="todo.description" [ngModelOptions]="{standalone: true}"></textarea>
+        <label class="todo-form-text">Description</label>
+        <textarea class="todo-form-textarea" [(ngModel)]="todo.description" [ngModelOptions]="{standalone: true}"></textarea>
       </div>
     </form>
   </div>

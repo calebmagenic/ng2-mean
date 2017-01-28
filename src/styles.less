@@ -1,18 +1,15 @@
-@import "app/todo/todo";
+@import "../node_modules/bootstrap/less/bootstrap";
 
-.app {
-    .header {
-        height: 60px;
-        width: 100%;
-        padding: 5px 15px;
-        float: left;
+// generators
+@import "app/core/styles/generator";
+@import "app/todo/styles/generator";
 
-        background-color: @todo-color-light;
+//generation
 
-        .header-text {
-            font-size: 30px;
+.app.default-mono-theme {
+    @default: rgba(255, 255, 255, 1);
+    @light: rgba(122, 122, 122, 1);
 
-            color: @todo-color-default;
-        }
-    }
+    .generate-header-component(@default,@light);
+    .generate-monochrome-todo-component(@default,@light, 50%);
 }

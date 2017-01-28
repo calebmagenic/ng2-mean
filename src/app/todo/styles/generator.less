@@ -1,0 +1,189 @@
+@import "color";
+@import "structure";
+@import "skin";
+
+.generate-todo() {
+    .generate-todo-structure();
+    .generate-todo-skin();
+
+    .todo {
+        @todo-structure();
+        @todo-skin();
+
+        // default todo
+        .todo-view,
+        .todo-edit {
+            @todo-view-structure();
+            @todo-view-skin();
+
+            .todo-operations {
+                @todo-operation-structure();
+                @todo-operation-skin();
+
+                .todo-edit-toggle,
+                .todo-edit-cancel,
+                .todo-delete {
+                    @todo-action-structure();
+                    @todo-action-skin();
+                }
+            }
+        }
+
+        .todo-text-region {
+            @todo-text-region-structure();
+            @todo-text-region-skin();
+        }
+
+        .todo-form {
+            .todo-form-text {
+                @todo-form-text-structure();
+                @todo-form-text-skin();
+            }
+
+            .todo-form-checkbox {
+                @todo-form-checkbox-structure();
+                @todo-form-checkbox-skin();
+            }
+
+            .todo-form-input {
+                @todo-form-input-structure();
+                @todo-form-input-skin();
+            }
+
+            .todo-form-textarea {
+                @todo-form-textarea-structure();
+                @todo-form-textarea-skin();
+            }
+        }
+
+        // active todo
+        &.todo-edit-mode,
+        &.todo-selected,
+        &:hover {
+            @todo-active-structure();
+            @todo-active-skin();
+
+            .todo-view,
+            .todo-edit {
+                @todo-active-view-structure();
+                @todo-active-view-skin();
+
+                .todo-operations {
+                    @todo-active-operations-structure();
+                    @todo-active-operations-skin();
+
+                    .todo-edit-toggle,
+                    .todo-edit-cancel,
+                    .todo-delete {
+                        @todo-active-action-structure();
+                        @todo-active-action-skin();
+                    }
+                }
+            }
+        }
+    }
+}
+
+.generate-todo-detail() {
+    .generate-todo-detail-structure();
+    .generate-todo-detail-skin();
+
+    .todo-detail {
+        @todo-detail-structure();
+        @todo-detail-skin();
+    }
+
+    .todo-detail-header {
+        @todo-detail-header-structure();
+        @todo-detail-header-skin();
+    }
+
+    .todo-description {
+        @todo-description-structure();
+        @todo-description-skin();
+    }
+
+    .todo-description-text {
+        @todo-description-text-structure();
+        @todo-description-text-skin();
+    }
+}
+
+.generate-todo-list() {
+    .generate-todo-list-structure();
+    .generate-todo-list-skin();
+
+    .todo-list {
+        @todo-list-structure();
+        @todo-list-skin();
+    }
+
+    .todo-list-group {
+        @todo-list-group-structure();
+        @todo-list-group-skin();
+    }
+
+    .todo-detail-pane {
+        @todo-detail-pane-structure();
+        @todo-detail-pane-skin();
+    }
+}
+
+.generate-todo-state-menu() {
+    .generate-todo-state-menu-structure();
+    .generate-todo-state-menu-skin();
+
+    .todo-state-menu {
+        @todo-state-menu-structure();
+        @todo-state-menu-skin();
+
+        .todo-menu-item {
+            @todo-menu-item-structure();
+            @todo-menu-item-skin();
+
+            &.todo-state-selected {
+                @todo-state-selected-structure();
+                @todo-state-selected-skin();
+            }
+        }
+
+        .todo-state {
+            .todo-menu-item();
+
+            &:hover {
+                @todo-state-hover-structure();
+                @todo-state-hover-skin();
+            }
+        }
+
+        .todo-state-active {
+            .todo-state();
+        }
+
+        .todo-state-completed {
+            .todo-state();
+        }
+
+        .todo-operation {
+            .todo-menu-item();
+
+            &:hover {
+                @todo-operation-hover-structure();
+                @todo-operation-hover-skin();
+            }
+        }
+
+        .todo-add {
+            .todo-operation();
+        }
+    }
+}
+
+.generate-monochrome-todo-component(@default, @light, @contrast) {
+    .generate-monochrome-todo-palette(@default, @light, @contrast);
+
+    .generate-todo();
+    .generate-todo-detail();
+    .generate-todo-list();
+    .generate-todo-state-menu();
+}
