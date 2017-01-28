@@ -23,12 +23,14 @@ export class TodoListComponent implements OnInit {
       .then(todos => this.filterResults(todos));
   }
 
-  filterResults(todos: Todo[]) {
+  filterResults(todos: Todo[], resetSelected: Boolean = true) {
     this.activeTodos = todos.filter((todo: Todo) => !todo.done);
     this.completedTodos = todos.filter((todo: Todo) => todo.done);
 
-    this.showActive = true;
-    this.setSelectedItem();
+    if(resetSelected) {
+      this.showActive = true;
+      this.setSelectedItem();
+    }
   }
 
   setSelectedItem() {
@@ -58,10 +60,18 @@ export class TodoListComponent implements OnInit {
   }
 
   onDelete(todo: Todo) {
-    this.service.remove(todo._id)
-      .then(todos => this.todos = todos)
-      .then(todos => this.filterResults(todos))
-      .catch(err => this.handleDeleteError(err));
+    if(todo._id) {
+      this.service.remove(todo._id)
+        .then(todos => this.todos = todos)
+        .then(todos => this.filterResults(todos))
+        .catch(err => this.handleDeleteError(err));
+    } else {
+      let index = this.todos.findIndex((value: Todo) => todo === value);
+      if(typeof index !== "undefined") {
+        this.todos.splice(index, 1);
+        this.filterResults(this.todos, false);
+      }
+    }
   }
 
   onSave(todo: Todo) {
