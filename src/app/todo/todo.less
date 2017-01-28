@@ -1,0 +1,198 @@
+@import "styles/structure";
+@import "styles/skin";
+
+.todo-list-container {
+    .todo-state-menu {
+        .todo-state-menu-structure();
+        .todo-state-menu-skin();
+
+        .todo-menu-item {
+            .todo-menu-item-structure();
+            .todo-menu-item-skin();
+
+            &.todo-state-selected {
+                .todo-state-selected-structure();
+                .todo-state-selected-skin();
+            }
+        }
+
+        .todo-state {
+            .todo-menu-item();
+
+            &:hover {
+                .todo-state-hover-structure();
+                .todo-state-hover-skin();
+            }
+        }
+
+        .todo-state-active {
+            .todo-state();
+        }
+
+        .todo-state-completed {
+            .todo-state();
+        }
+
+        .todo-operation {
+            .todo-menu-item();
+
+            &:hover {
+                .todo-operation-hover-structure();
+                .todo-operation-hover-skin();
+            }
+        }
+
+        .todo-add {
+            .todo-operation();
+        }
+    }
+
+    .todo-list {
+        .todo-list-structure();
+        .todo-list-skin();
+
+        .todo-list-group {
+            .todo-list-group-structure();
+            .todo-list-group-skin();
+        }
+    }
+
+    .todo-detail-pane {
+        .todo-detail-pane-structure();
+        .todo-detail-pane-skin();
+
+        .todo-detail {
+            .todo-detail-structure();
+            .todo-detail-skin();
+
+            .todo-detail-header {
+                .todo-detail-header-structure();
+                .todo-detail-header-skin();
+            }
+
+            .todo-description {
+                .todo-description-structure();
+                .todo-description-skin();
+            }
+        }
+    }
+
+    .todo {
+        .todo-structure();
+        .todo-skin();
+
+        &.todo-edit-mode,
+        &.todo-selected {
+            .todo-active-structure();
+            .todo-active-skin();
+
+            .todo-view {
+                .todo-view-structure();
+                .todo-view-skin();
+
+                .todo-operations {
+                    .todo-operations-structure();
+                    .todo-operations-skin();
+
+                    .todo-action {
+                        .todo-action-structure();
+                        .todo-action-skin();
+                    }
+
+                    .todo-edit-toggle {
+                        .todo-action();
+                    }
+
+                    .todo-delete {
+                        .todo-action();
+                    }
+
+                    .todo-edit-cancel {
+                        .todo-action();
+                    }
+                }
+            }
+
+            .todo-edit {
+                .todo-view();
+            }
+        }
+
+        &:hover {
+            .todo-edit-mode();
+        }
+
+        .todo-view,
+        .todo-edit {
+            width: 100%;
+            float: left;
+
+            .todo-operations {
+                cursor: pointer;
+                width: 65px;
+                float: left;
+
+                .todo-action {
+                    padding: 5px;
+                    text-align: center;
+
+                    background-color: @todo-color-dark;
+                    border: 1px double @todo-color-light;
+                }
+
+                .todo-edit-toggle {
+                    .todo-action();
+                }
+
+                .todo-delete {
+                    .todo-action();
+                }
+            }
+
+            .todo-text {
+                padding-left: 15px;
+                width: ~"calc(100% - 65px)";
+                float: left;
+            }
+        }
+
+        .todo-edit {
+            .todo-operations {
+                .todo-action {
+                    padding: 5px;
+                    text-align: center;
+
+                    background-color: @todo-color-dark;
+                    border: 1px double @todo-color-light;
+                }
+
+                .todo-edit-toggle {
+                    .todo-action();
+                }
+
+                .todo-edit-cancel {
+                    .todo-action();
+                }
+            }
+
+            .todo-form {
+                padding-left: 15px;
+                width: ~"calc(100% - 65px)";
+                float: left;
+
+                label {
+                    width: 100%;
+                }
+
+                input[type='text'] {
+                    width: 100%;
+                }
+
+                textarea {
+                    width: 100%;
+                    height: 100px;
+                }
+            }
+        }
+    }
+}

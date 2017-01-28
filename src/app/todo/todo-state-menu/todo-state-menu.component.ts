@@ -27,6 +27,7 @@ export class TodoStateMenuComponent implements OnInit {
 
   createNew() {
     this.onCreate.emit();
+    this.showActive = true;
   }
 
 }
