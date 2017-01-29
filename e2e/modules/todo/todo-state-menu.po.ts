@@ -13,12 +13,20 @@ export class TodoStateMenu {
         return this.getActiveButton().getText();
     }
 
+    getActiveButtonClass() {
+        return this.getActiveButton().getAttribute("class");
+    }
+
     getCompletedButton() {
         return this.getContainer().element(by.css('.todo-state-completed'));
     }
 
     getCompletedButtonText() {
         return this.getCompletedButton().getText();
+    }
+
+    getCompletedButtonClass() {
+        return this.getCompletedButton().getAttribute("class");
     }
 
     getAddButton() {
@@ -29,15 +37,19 @@ export class TodoStateMenu {
         return this.getAddButton().getText();
     }
 
+    getAddButtonClass() {
+        return this.getAddButton().getAttribute("class");
+    }
+
     clickActiveButton() {
-        this.getActiveButton().click();
+        return this.getActiveButton().click();
     }
 
     clickCompletedButton() {
-        this.getCompletedButton().click();
+        return this.getCompletedButton().click();
     }
 
     clickAddButton() {
-        this.getAddButton().click();
+        return this.getAddButton().click();
     }
 }
