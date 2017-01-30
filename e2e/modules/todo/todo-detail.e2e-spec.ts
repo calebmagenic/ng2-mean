@@ -16,6 +16,31 @@ describe('Todo Detail', () => {
         detail = page.getTodoDetail();
     });
 
+    it("should provide a container", () => {
+        page.navigateTo();
+        expect(detail.getContainer().isPresent()).toBe(true);
+    });
+
+    it("should provide a header", () => {
+        page.navigateTo();
+        expect(detail.getHeader().isPresent()).toBe(true);
+    });
+
+    it("should provide a description", () => {
+        page.navigateTo();
+        expect(detail.getDescriptionContainer().isPresent()).toBe(true);
+    });
+
+    it("should provide description text", () => {
+        page.navigateTo();
+        expect(detail.getDescription().isPresent()).toBe(true);
+    });
+
+    it("should set the header text", () => {
+        page.navigateTo();
+        expect(detail.getHeaderText()).toBe(detailHeader);
+    });
+
     it('should set default description text', (done) => {
         page.navigateTo();
         page.removeAllTodos().then(() => {
@@ -34,31 +59,6 @@ describe('Todo Detail', () => {
                     done();
                 });
             });
-        });
-
-        it("should provide a container", () => {
-            page.navigateTo();
-            expect(detail.getContainer().isPresent()).toBe(true);
-        });
-
-        it("should provide a header", () => {
-            page.navigateTo();
-            expect(detail.getHeader().isPresent()).toBe(true);
-        });
-
-        it("should set the header text", () => {
-            page.navigateTo();
-            expect(detail.getHeaderText()).toBe(detailHeader);
-        });
-
-        it("should provide a description", () => {
-            page.navigateTo();
-            expect(detail.getDescriptionContainer().isPresent()).toBe(true);
-        });
-
-        it("should provide description text", () => {
-            page.navigateTo();
-            expect(detail.getDescription().isPresent()).toBe(true);
         });
 
         it("should set the description text", () => {

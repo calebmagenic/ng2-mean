@@ -19,10 +19,44 @@ export class TodoList {
         return browser.get('/list');
     }
 
-    removeAllTodos() {
+    getContainer() {
+        return element(by.css('.todo-list-container'));
+    }
+
+    getTodoListContainer() {
+        return this.getContainer().element(by.css('.todo-list'));
+    }
+
+    getTodoListGroup() {
+        return this.getTodoListContainer().element(by.css('.todo-list-group'));
+    }
+
+    getTodoDetailPane() {
+        return this.getContainer().element(by.css('.todo-detail-pane'));
+    }
+
+    getTodoStateMenu(): TodoStateMenu {
+        return this.todoMenu;
+    }
+
+    getTodoDetail(): TodoDetail {
+        return this.todoDetail;
+    }
+
+    getTodoList() {
+        return TodoItem.getList();
+    }
+
+    getTodoItem(index: number) {
+        return this.getTodoList().then((list: TodoItem[]) => {
+            return list.length && list.length > index ? list[index] : null;
+        });
+    }
+
+    removeAllTodos(): promise.Promise<void[]> {
         // get all todo items
         return this.getTodoList().then(items => {
-            let promises: promise.Promise<any>[] = [];
+            let promises: Array<promise.Promise<void>> = new Array<promise.Promise<void>>();
             // make sure items exist
             if(items.length) {
                 // click the Delete button on each item
@@ -48,24 +82,6 @@ export class TodoList {
             item.setDescriptionInput(itemDescription);
             // click save
             item.clickSaveButton();
-        });
-    }
-
-    getTodoStateMenu(): TodoStateMenu {
-        return this.todoMenu;
-    }
-
-    getTodoDetail(): TodoDetail {
-        return this.todoDetail;
-    }
-
-    getTodoList() {
-        return TodoItem.getList();
-    }
-
-    getTodoItem(index: number) {
-        return this.getTodoList().then((list: TodoItem[]) => {
-            return list.length && list.length > index ? list[index] : null;
         });
     }
 }

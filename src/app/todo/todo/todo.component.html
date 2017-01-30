@@ -15,11 +15,11 @@
     <form class="todo-text-region todo-form">
       <input class="todo-form-checkbox" type="checkbox" [(ngModel)]="todo.done" [ngModelOptions]="{standalone: true}" /> Finished
       <div class="form-group">
-        <label class="todo-form-text .todo-form-text-label">Text</label>
+        <label class="todo-form-text todo-form-text-label">Text</label>
         <input class="todo-form-input" type="text" [(ngModel)]="todo.text" [ngModelOptions]="{standalone: true}" />
       </div>
       <div class="form-group">
-        <label class="todo-form-text .todo-form-description-label">Description</label>
+        <label class="todo-form-text todo-form-description-label">Description</label>
         <textarea class="todo-form-textarea" [(ngModel)]="todo.description" [ngModelOptions]="{standalone: true}"></textarea>
       </div>
     </form>

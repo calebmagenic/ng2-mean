@@ -1,10 +1,10 @@
-import { browser, element, by, promise, ElementFinder,  } from 'protractor';
+import { browser, element, by, promise, ElementFinder } from 'protractor';
 
 export class TodoItem {
     constructor(private e: ElementFinder) {
     }
 
-    static getList() {
+    static getList(): promise.Promise<TodoItem[]> {
         let list: TodoItem[] = [];
 
         return element.all(by.css('app-todo')).each((e: ElementFinder, i: Number) => {
@@ -34,8 +34,16 @@ export class TodoItem {
         return this.getViewOperations().element(by.css('.todo-edit-toggle'));
     }
 
+    getEditButtonText() {
+        return this.getEditButton().getText();
+    }
+
     getDeleteButton() {
         return this.getViewOperations().element(by.css('.todo-delete'));
+    }
+
+    getDeleteButtonText() {
+        return this.getDeleteButton().getText();
     }
 
     getViewTextRegion() {
@@ -58,8 +66,16 @@ export class TodoItem {
         return this.getEditViewOperations().element(by.css('.todo-edit-toggle'));
     }
 
+    getSaveButtonText() {
+        return this.getSaveButton().getText();
+    }
+
     getCancelButton() {
         return this.getEditViewOperations().element(by.css('.todo-edit-cancel'));
+    }
+
+    getCancelButtonText() {
+        return this.getCancelButton().getText();
     }
 
     getEditForm() {
@@ -71,19 +87,35 @@ export class TodoItem {
     }
 
     getTextInputLabel() {
-        return this.getEditForm().element(by.css('.todo-form .form-group .todo-form-text.todo-form-text-label'));
+        return this.getEditForm().element(by.css('.form-group .todo-form-text.todo-form-text-label'));
+    }
+
+    getTextInputLabelText() {
+        return this.getTextInputLabel().getText();
     }
 
     getTextInput() {
-        return this.getEditForm().element(by.css('.todo-form .form-group .todo-form-input'));
+        return this.getEditForm().element(by.css('.form-group .todo-form-input'));
+    }
+
+    getTextInputValue() {
+        return this.getTextInput().getAttribute('value');
     }
 
     getDescriptionInputLabel() {
-        return this.getEditForm().element(by.css('.todo-form .form-group .todo-form-text.todo-form-description-label'));
+        return this.getEditForm().element(by.css('.form-group .todo-form-text.todo-form-description-label'));
+    }
+
+    getDescriptionInputLabelText() {
+        return this.getDescriptionInputLabel().getText();
     }
 
     getDescriptionInput() {
-        return this.getEditForm().element(by.css('.todo-form .form-group .todo-form-textarea'));
+        return this.getEditForm().element(by.css('.form-group .todo-form-textarea'));
+    }
+
+    getDescriptionInputValue() {
+        return this.getDescriptionInput().getAttribute('value');
     }
 
 
