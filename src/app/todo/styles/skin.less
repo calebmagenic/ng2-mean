@@ -2,8 +2,8 @@
 .generate-todo-skin() {
     // default
     @todo-skin: {
-        border-top-style: solid;
-        border-top-color: @todo-color-dark;
+        border-bottom-style: double;
+        border-bottom-color: @todo-color-dark;
         background-color: @todo-color-light;
     };
 
@@ -89,6 +89,7 @@
     @todo-list-skin: {
         background-color: @todo-color-dark;
         color: @todo-color-default;
+        box-shadow: 0 0 1px @todo-color-dark;
     };
 
     @todo-list-group-skin: {
@@ -98,6 +99,7 @@
     @todo-detail-pane-skin: {
         background-color: @todo-color-high-contrast;
         color: @todo-color-dark;
+        box-shadow: inset 0 0 1px @todo-color-dark;
     };
 }
 
@@ -113,18 +115,22 @@
     @todo-menu-item-skin: {
         cursor: pointer;
         background-color: transparent;
+        outline: 0;
     };
 
     @todo-state-selected-skin: {
         background-color: @todo-color-light;
+        box-shadow: 0 0 1px @todo-color-dark;
     };
 
     @todo-state-hover-skin: {
         background-color: @todo-color-light;
+        box-shadow: 0 0 1px @todo-color-dark;
     };
 
     @todo-operation-hover-skin: {
         background-color: @todo-color-light;
+        box-shadow: 0 0 1px @todo-color-dark;
     };
 }
 
