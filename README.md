@@ -42,3 +42,19 @@ Run the web app
 ```bash
 $ npm run start
 ```
+
+## Run E2E Tests
+Run mongo
+```bash
+$ npm run mongo
+```
+
+Run the server
+```bash
+$ npm run build
+```
+
+Run the e2e tests
+```bash
+$ npm run e2e
+```
