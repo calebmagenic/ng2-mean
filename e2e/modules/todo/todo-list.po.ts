@@ -69,7 +69,7 @@ export class TodoList {
         });
     }
 
-    addNewTodo(itemText: string = 'New item', itemDescription: string = 'New item description') {
+    saveNewTodo(itemText: string = 'New item', itemDescription: string = 'New item description') {
         // add new item to list
         this.todoMenu.clickAddButton();
         // get new item
@@ -82,6 +82,15 @@ export class TodoList {
             item.setDescriptionInput(itemDescription);
             // click save
             item.clickSaveButton();
+        });
+    }
+
+    getNewTodo(): promise.Promise<TodoItem> {
+        // add new item to list
+        this.todoMenu.clickAddButton();
+        // get new item
+        return this.getTodoItem(0).then(item => {
+            return item;
         });
     }
 }

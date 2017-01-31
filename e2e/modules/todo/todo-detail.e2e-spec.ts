@@ -60,7 +60,7 @@ describe('Todo Detail', () => {
         beforeEach(async (done) => {
             menu = page.getTodoStateMenu();
             await page.removeAllTodos();
-            await page.addNewTodo(text, description);
+            await page.saveNewTodo(text, description);
             done();
         });
 
