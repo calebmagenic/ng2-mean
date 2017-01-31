@@ -12,7 +12,7 @@ describe('Todo Item', () => {
         page.navigateTo();
 
         await page.removeAllTodos();
-        await page.addNewTodo(text, description);
+        await page.saveNewTodo(text, description);
 
         todo = await page.getTodoItem(0);
 
@@ -82,6 +82,19 @@ describe('Todo Item', () => {
 
                     expect(items).not.toBeNull();
                     expect(items.length).toBe(0);
+
+                    done();
+                });
+                it('should remove unsaved todo item from list', async (done) => {
+                    await page.removeAllTodos();
+                    
+                    let newTodo = await page.getNewTodo();
+                    await newTodo.clickDeleteButton();
+
+                    let list = await page.getTodoList();
+
+                    expect(list).not.toBeNull();
+                    expect(list.length).toBe(0);
 
                     done();
                 });
