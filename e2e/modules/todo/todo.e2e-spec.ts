@@ -7,131 +7,149 @@ describe('Todo Item', () => {
     let text: string = 'todo item text';
     let description: string = 'todo item description';
 
-    beforeEach((done) => {
+    beforeEach(async (done) => {
         page = new TodoList();
         page.navigateTo();
-        page.removeAllTodos().then(() => {
-            page.addNewTodo(text, description).then(() => {
-                page.getTodoItem(0).then(item => {
-                    todo = item;
-                    done();
-                });
-            });
-        });
+
+        await page.removeAllTodos();
+        await page.addNewTodo(text, description);
+
+        todo = await page.getTodoItem(0);
+
+        done();
     });
 
-    it('should provide a container', () => {
-        expect(todo.getContainer().isPresent()).toBe(true);
+    it('should provide a container', async (done) => {
+        expect(await todo.getContainer().isPresent()).toBe(true);
+        done();
     });
 
     describe('Initial View State', () => {
-        it('should provide a view container', () => {
-            expect(todo.getView().isPresent()).toBe(true);
+        it('should provide a view container', async (done) => {
+            expect(await todo.getView().isPresent()).toBe(true);
+            done();
         });
-        it('should not provide edit view', () => {
-            expect(todo.getEditView().isPresent()).toBe(false);
+        it('should not provide edit view', async (done) => {
+            expect(await todo.getEditView().isPresent()).toBe(false);
+            done();
         });
-        it('should provide todo operations', () => {
-            expect(todo.getViewOperations().isPresent()).toBe(true);
+        it('should provide todo operations', async (done) => {
+            expect(await todo.getViewOperations().isPresent()).toBe(true);
+            done();
         });
-        it('should provide todo text region', () => {
-            expect(todo.getViewTextRegion().isPresent()).toBe(true);
+        it('should provide todo text region', async (done) => {
+            expect(await todo.getViewTextRegion().isPresent()).toBe(true);
+            done();
         });
 
         describe('Todo Operations', () => {
-            it('should provide Edit button', () => {
-                expect(todo.getEditButton().isPresent()).toBe(true);
+            it('should provide Edit button', async (done) => {
+                expect(await todo.getEditButton().isPresent()).toBe(true);
+                done();
             });
-            it('should provide Delete button', () => {
-                expect(todo.getDeleteButton().isPresent()).toBe(true);
+            it('should provide Delete button', async (done) => {
+                expect(await todo.getDeleteButton().isPresent()).toBe(true);
+                done();
             });
 
             describe('Edit Button', () => {
-                it('should contain Edit text', () => {
-                    expect(todo.getEditButtonText()).toBe('Edit');
+                it('should contain Edit text', async (done) => {
+                    expect(await todo.getEditButtonText()).toBe('Edit');
+                    done();
                 });
-                it('should display todo item in edit mode', () => {
-                    todo.clickEditButton().then(() => {
-                        expect(todo.getEditView().isPresent()).toBe(true);
-                        todo.getContainer().getAttribute("class").then(classNames => {
-                            var classes = classNames.split(' ');
-                            var className = classes[1];
-                            expect(className).toBe('todo-edit-mode');
-                        });
-                    });
+                it('should display todo item in edit mode', async (done) => {
+                    await todo.clickEditButton();
+                    
+                    let classNames = await todo.getContainerClass();
+                    let classes = classNames.split(' ');
+                    let className = classes[1];
+
+                    expect(await todo.getEditView().isPresent()).toBe(true);
+                    expect(className).toBe('todo-edit-mode');
+
+                    done();
                 });
             });
 
             describe('Delete Button', () => {
-                it('should contain Delete text', () => {
-                    expect(todo.getDeleteButtonText()).toBe('Delete');
+                it('should contain Delete text', async (done) => {
+                    expect(await todo.getDeleteButtonText()).toBe('Delete');
+                    done();
                 });
-                it('should remove todo item from list', () => {
-                    todo.clickDeleteButton().then(() => {
-                        page.getTodoList().then(items => {
-                            expect(items).not.toBeNull();
-                            expect(items.length).toBe(0);
-                        });
-                    });
+                it('should remove todo item from list', async (done) => {
+                    await todo.clickDeleteButton();
+                    let items = await page.getTodoList();
+
+                    expect(items).not.toBeNull();
+                    expect(items.length).toBe(0);
+
+                    done();
                 });
             });
         });
 
         describe('Text Region', () => {
-            it('should show todo text', () => {
-                expect(todo.getViewTextRegionText()).toBe(text);
+            it('should show todo text', async (done) => {
+                expect(await todo.getViewTextRegionText()).toBe(text);
+                done();
             });
         });
     });
 
     describe('Edit Mode State', () => {
-        beforeEach(() => {
-            // item was added, so lets click edit
-            todo.clickEditButton();
+        beforeEach(async (done) => {
+            // item was added, so lets click Edit
+            await todo.clickEditButton();
+            done();
         });
 
-        it('should not provide a view container', () => {
-            expect(todo.getView().isPresent()).toBe(false);
+        it('should not provide a view container', async (done) => {
+            expect(await todo.getView().isPresent()).toBe(false);
+            done();
         });
-        it('should provide an edit view container', () => {
-            expect(todo.getEditView().isPresent()).toBe(true);
+        it('should provide an edit view container', async (done) => {
+            expect(await todo.getEditView().isPresent()).toBe(true);
+            done();
         });
-        it('should provide todo operations', () => {
-            expect(todo.getEditViewOperations().isPresent()).toBe(true);
+        it('should provide todo operations', async (done) => {
+            expect(await todo.getEditViewOperations().isPresent()).toBe(true);
+            done();
         });
-        it('should provide edit form', () => {
-            expect(todo.getEditForm().isPresent()).toBe(true);
+        it('should provide edit form', async (done) => {
+            expect(await todo.getEditForm().isPresent()).toBe(true);
+            done();
         });
 
         describe('Todo Operations', () => {
-            it('should provide Save button', () => {
-                expect(todo.getSaveButton().isPresent()).toBe(true);
+            it('should provide Save button', async (done) => {
+                expect(await todo.getSaveButton().isPresent()).toBe(true);
+                done();
             });
-            it('should provide Cancel button', () => {
-                expect(todo.getCancelButton().isPresent()).toBe(true);
+            it('should provide Cancel button', async (done) => {
+                expect(await todo.getCancelButton().isPresent()).toBe(true);
+                done();
             });
 
             describe('Save Button', () => {
                 const saveText = 'save input item text';
                 const saveDescription = 'save input item description';
 
-                it('should contain Save text', () => {
-                    expect(todo.getSaveButtonText()).toBe('Save');
+                it('should contain Save text', async (done) => {
+                    expect(await todo.getSaveButtonText()).toBe('Save');
+                    done();
                 });
-                it('should save todo item', (done) => {
-                    todo.setTextInput(saveText).then(() => {
-                        todo.setDescriptionInput(saveDescription).then(() => {
-                            todo.clickSaveButton().then(() => {
-                                page.getTodoItem(0).then(item => {
-                                    item.clickEditButton().then(() => {
-                                        expect(item.getTextInputValue()).toBe(saveText);
-                                        expect(item.getDescriptionInputValue()).toBe(saveDescription);
-                                        done();
-                                    });
-                                });
-                            });
-                        });
-                    });
+                it('should save todo item', async (done) => {
+                    await todo.setTextInput(saveText);
+                    await todo.setDescriptionInput(saveDescription);
+                    await todo.clickSaveButton();
+
+                    let item = await page.getTodoItem(0);
+                    await item.clickEditButton();
+                                        
+                    expect(await item.getTextInputValue()).toBe(saveText);
+                    expect(await item.getDescriptionInputValue()).toBe(saveDescription);
+
+                    done();
                 });
             });
 
@@ -139,40 +157,65 @@ describe('Todo Item', () => {
                 const cancelText = 'cancel edit text';
                 const cancelDescription = 'cancel edit description';
 
-                it('should contain Cancel text', () => {
-                    expect(todo.getCancelButtonText()).toBe('Cancel');
+                it('should contain Cancel text', async (done) => {
+                    expect(await todo.getCancelButtonText()).toBe('Cancel');
+                    done();
                 });
-                it('should cancel edit and return to view mode', (done) => {
-                    todo.clickCancelButton().then(() => {
-                        expect(todo.getView().isPresent()).toBe(true);
-                        expect(todo.getEditView().isPresent()).toBe(false);
-                        done();
-                    });
+                it('should cancel edit and return to view mode', async (done) => {
+                    await todo.clickCancelButton();
+
+                    expect(await todo.getView().isPresent()).toBe(true);
+                    expect(await todo.getEditView().isPresent()).toBe(false);
+
+                    done();
+                });
+                it('should cancel edit and return todo to previous state', async (done) => {
+                    await todo.setTextInput(cancelText);
+                    await todo.setDescriptionInput(cancelDescription);
+                    await todo.setCheckboxState(true);
+                    await todo.clickCancelButton();
+                    await todo.clickEditButton();
+
+                    let previousText = await todo.getTextInputValue();
+                    let previousDescription = await todo.getDescriptionInputValue();
+
+                    expect(previousText).toBe(text);
+                    expect(previousDescription).toBe(description);
+
+                    done();
                 });
             });
         });
 
         describe('Edit Form', () => {
-            it('should provide checkbox', () => {
-                expect(todo.getCheckbox().isPresent()).toBe(true);
+            it('should provide checkbox', async (done) => {
+                expect(await todo.getCheckbox().isPresent()).toBe(true);
+                done();
             });
-            it('should provide todo text input label with Text value', () => {
-                expect(todo.getTextInputLabel().isPresent()).toBe(true);
-                expect(todo.getTextInputLabelText()).toBe('Text');
+            it('should provide todo text input label with Text value', async (done) => {
+                expect(await todo.getTextInputLabel().isPresent()).toBe(true);
+                expect(await todo.getTextInputLabelText()).toBe('Text');
+
+                done();
             });
-            it('should provide auto-populated todo text input', () => {
-                expect(todo.getTextInput().isPresent()).toBe(true);
-                expect(todo.getTextInputValue()).toBe(text);
+            it('should provide auto-populated todo text input', async (done) => {
+                expect(await todo.getTextInput().isPresent()).toBe(true);
+                expect(await todo.getTextInputValue()).toBe(text);
+
+                done();
             });
-            it('should provide todo description input label with Description value', () => {
-                expect(todo.getDescriptionInputLabel().isPresent()).toBe(true);
-                expect(todo.getDescriptionInputLabelText()).toBe('Description');
+            it('should provide todo description input label with Description value', async (done) => {
+                expect(await todo.getDescriptionInputLabel().isPresent()).toBe(true);
+                expect(await todo.getDescriptionInputLabelText()).toBe('Description');
+
+                done();
             });
-            it('should provide auto-populated todo description input', () => {
-                expect(todo.getDescriptionInput().isPresent()).toBe(true);
-                expect(todo.getDescriptionInputValue()).toBe(description);
+            it('should provide auto-populated todo description input', async (done) => {
+                expect(await todo.getDescriptionInput().isPresent()).toBe(true);
+                expect(await todo.getDescriptionInputValue()).toBe(description);
+
+                done();
             });
         });
-        
     });
 });

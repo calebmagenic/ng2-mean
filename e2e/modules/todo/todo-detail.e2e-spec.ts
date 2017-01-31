@@ -16,54 +16,58 @@ describe('Todo Detail', () => {
         detail = page.getTodoDetail();
     });
 
-    it("should provide a container", () => {
+    it("should provide a container", async (done) => {
         page.navigateTo();
-        expect(detail.getContainer().isPresent()).toBe(true);
+        expect(await detail.getContainer().isPresent()).toBe(true);
+        done();
     });
 
-    it("should provide a header", () => {
+    it("should provide a header", async (done) => {
         page.navigateTo();
-        expect(detail.getHeader().isPresent()).toBe(true);
+        expect(await detail.getHeader().isPresent()).toBe(true);
+        done();
     });
 
-    it("should provide a description", () => {
+    it("should provide a description", async (done) => {
         page.navigateTo();
-        expect(detail.getDescriptionContainer().isPresent()).toBe(true);
+        expect(await detail.getDescriptionContainer().isPresent()).toBe(true);
+        done();
     });
 
-    it("should provide description text", () => {
+    it("should provide description text", async (done) => {
         page.navigateTo();
-        expect(detail.getDescription().isPresent()).toBe(true);
+        expect(await detail.getDescription().isPresent()).toBe(true);
+        done();
     });
 
-    it("should set the header text", () => {
+    it("should set the header text", async (done) => {
         page.navigateTo();
-        expect(detail.getHeaderText()).toBe(detailHeader);
+        expect(await detail.getHeaderText()).toBe(detailHeader);
+        done();
     });
 
-    it('should set default description text', (done) => {
+    it('should set default description text', async (done) => {
         page.navigateTo();
-        page.removeAllTodos().then(() => {
-            detail.getDescriptionText().then(text => {
-                expect(text).toBe(defaultDescription);
-                done();
-            });
-        });
+        await page.removeAllTodos();
+
+        let text = await detail.getDescriptionText();
+
+        expect(text).toBe(defaultDescription);
+        done();
     });
 
     describe('with at least one item', () => {
-        beforeEach(done => {
+        beforeEach(async (done) => {
             menu = page.getTodoStateMenu();
-            page.removeAllTodos().then(() => {
-                page.addNewTodo(text, description).then(() => {
-                    done();
-                });
-            });
+            await page.removeAllTodos();
+            await page.addNewTodo(text, description);
+            done();
         });
 
-        it("should set the description text", () => {
+        it("should set the description text", async (done) => {
             page.navigateTo();
-            expect(detail.getDescriptionText()).toBe(description);
+            expect(await detail.getDescriptionText()).toBe(description);
+            done();
         });
     });
 });

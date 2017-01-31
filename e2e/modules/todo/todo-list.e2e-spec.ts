@@ -7,23 +7,27 @@ describe('Todo List', () => {
         page = new TodoList();
     });
 
-    it('should provide a container', () => {
+    it('should provide a container', async (done) => {
         page.navigateTo();
-        expect(page.getContainer().isPresent()).toBe(true);
+        expect(await page.getContainer().isPresent()).toBe(true);
+        done();
     });
 
-    it('should provide a list container', () => {
+    it('should provide a list container', async (done) => {
         page.navigateTo();
-        expect(page.getTodoListContainer().isPresent()).toBe(true);
+        expect(await page.getTodoListContainer().isPresent()).toBe(true);
+        done();
     });
 
-    it('should provide a list group', () => {
+    it('should provide a list group', async (done) => {
         page.navigateTo();
-        expect(page.getTodoListGroup().isPresent()).toBe(true);
+        expect(await page.getTodoListGroup().isPresent()).toBe(true);
+        done();
     });
 
-    it('should provide a detail pane', () => {
+    it('should provide a detail pane', async (done) => {
         page.navigateTo();
-        expect(page.getTodoDetailPane().isPresent()).toBe(true);
+        expect(await page.getTodoDetailPane().isPresent()).toBe(true);
+        done();
     });
 });

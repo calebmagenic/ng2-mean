@@ -40,19 +40,25 @@ export class TodoComponent implements OnInit {
   select($event) {
     this.onSelect.emit(this.todo);
     this.selected = !this.selected;
-    this.previousTodo = Object.assign({}, this.todo);
   }
 
-  toggleMode(modeOnly: boolean) {
-    if(this.editMode && !modeOnly) {
-      this.onSave.emit(this.todo);
-    }
+  edit() {
+    this.previousTodo = Object.assign({}, this.todo);
+    this.editMode = true;
+  }
 
-    if(this.editMode && modeOnly) {
-      this.onCancel.emit(this.previousTodo);
-    }
+  cancel() {
+    this.todo.text = this.previousTodo.text;
+    this.todo.description = this.previousTodo.description;
+    this.todo.done = this.previousTodo.done;
+    this.editMode = false;
 
-    this.editMode = !this.editMode;
+    this.onCancel.emit(this.todo);
+  }
+
+  save() {
+    this.onSave.emit(this.todo);
+    this.editMode = false;
   }
 
   delete() {

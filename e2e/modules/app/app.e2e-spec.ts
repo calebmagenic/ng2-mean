@@ -7,33 +7,39 @@ describe('NG2 MEAN TODO app', function() {
     page = new AppPage();
   });
 
-  it("should set the browser title", () => {
+  it("should set the browser title", async (done) => {
     page.navigateTo();
-    expect(page.getTitle()).toEqual('Mean TODO');
+    expect(await page.getTitle()).toEqual('Mean TODO');
+    done();
   });
 
-  it("should provide a container element", () => {
+  it("should provide a container element", async (done)=> {
     page.navigateTo();
-    expect(page.getContainer().isPresent()).toBe(true);
+    expect(await page.getContainer().isPresent()).toBe(true);
+    done();
   });
 
-  it("should provide a themed container element", () => {
+  it("should provide a themed container element", async (done) => {
     page.navigateTo();
-    expect(page.getContainerClass()).toBe('app default-mono-theme');
+    expect(await page.getContainerClass()).toBe('app default-mono-theme');
+    done();
   });
 
-  it("should provide an app-header", () => {
+  it("should provide an app-header", async (done) => {
     page.navigateTo();
-    expect(page.getAppHeader().isPresent()).toBe(true);
+    expect(await page.getAppHeader().isPresent()).toBe(true);
+    done();
   });
 
-  it("should bind app header text", () => {
+  it("should bind app header text", async (done) => {
     page.navigateTo();
-    expect(page.getAppHeaderText()).toBe('NG2 MEAN: TODO');
+    expect(await page.getAppHeaderText()).toBe('NG2 MEAN: TODO');
+    done();
   });
 
-  it("should provide a router outlet", () => {
+  it("should provide a router outlet", async (done) => {
     page.navigateTo();
-    expect(page.getRouterOutlet().isPresent()).toBe(true);
+    expect(await page.getRouterOutlet().isPresent()).toBe(true);
+    done();
   });
 });

@@ -22,6 +22,10 @@ export class TodoItem {
         return this.element(by.css('.todo'));
     }
 
+    getContainerClass() {
+        return this.getContainer().getAttribute("class");
+    }
+
     getView() {
         return this.getContainer().element(by.css('.todo-view'));
     }
@@ -86,6 +90,10 @@ export class TodoItem {
         return this.getEditForm().element(by.css('.todo-form-checkbox'));
     }
 
+    getCheckboxState() {
+        return this.getCheckbox().isSelected();
+    }
+
     getTextInputLabel() {
         return this.getEditForm().element(by.css('.form-group .todo-form-text.todo-form-text-label'));
     }
@@ -129,6 +137,16 @@ export class TodoItem {
         return this.getDescriptionInput().clear().then(() => {
             return this.getDescriptionInput().sendKeys(input);
         });
+    }
+
+    setCheckboxState(checked: boolean) {
+        return this.getCheckboxState().then(state => {
+            if(state != checked) {
+                return this.getCheckbox().click();
+            } else {
+                return promise.fulfilled(null);
+            }
+        })
     }
 
 

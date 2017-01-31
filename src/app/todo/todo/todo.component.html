@@ -2,15 +2,15 @@
   <div class="todo-view" *ngIf="!editMode">
     <input type="hidden" value={{todo._id}} />
     <div class="todo-operations">
-      <div class="todo-edit-toggle" (click)="toggleMode(true)" *ngIf="!todo.done">Edit</div>
+      <div class="todo-edit-toggle" (click)="edit()" *ngIf="!todo.done">Edit</div>
       <div class="todo-delete" (click)="delete()">Delete</div>
     </div>
     <div class="todo-text-region todo-text">{{todo.text}}</div>
   </div>
   <div class="todo-edit" *ngIf="editMode">
     <div class="todo-operations">
-      <div class="todo-edit-toggle" (click)="toggleMode(false)">Save</div>
-      <div class="todo-edit-cancel" (click)="toggleMode(true)">Cancel</div>
+      <div class="todo-edit-toggle" (click)="save()">Save</div>
+      <div class="todo-edit-cancel" (click)="cancel()">Cancel</div>
     </div>
     <form class="todo-text-region todo-form">
       <input class="todo-form-checkbox" type="checkbox" [(ngModel)]="todo.done" [ngModelOptions]="{standalone: true}" /> Finished

@@ -10,152 +10,170 @@ describe('Todo State Menu', () => {
         menu = page.getTodoStateMenu();
     });
 
-    it("should provide container", () => {
+    it("should provide container", async (done) => {
         page.navigateTo();
-        expect(menu.getContainer().isPresent()).toBe(true);
+        expect(await menu.getContainer().isPresent()).toBe(true);
+        done();
     });
 
-    it("should provide active button", () => {
+    it("should provide active button", async (done) => {
         page.navigateTo();
-        expect(menu.getActiveButton().isPresent()).toBe(true);
+        expect(await menu.getActiveButton().isPresent()).toBe(true);
+        done();
     });
 
-    it("should provide completed button", () => {
+    it("should provide completed button", async (done) => {
         page.navigateTo();
-        expect(menu.getCompletedButton().isPresent()).toBe(true);
+        expect(await menu.getCompletedButton().isPresent()).toBe(true);
+        done();
     });
 
-    it("should provide add button", () => {
+    it("should provide add button", async (done) => {
         page.navigateTo();
-        expect(menu.getAddButton().isPresent()).toBe(true);
+        expect(await menu.getAddButton().isPresent()).toBe(true);
+        done();
     });
 
     describe('Active Menu Item', () => {
-        it('should have Active text', () => {
+        it('should have Active text', async (done) => {
             page.navigateTo();
-            menu.getActiveButtonText().then(text => {
-                expect(text).toBe('Active');
-            });
+            expect(await menu.getActiveButtonText()).toBe('Active');
+            done();
         });
-        it('should be styled as todo-state-active', () => {
+        it('should be styled as todo-state-active', async (done) => {
             page.navigateTo();
-            menu.getActiveButtonClass().then(classNames => {
-                let classes = classNames.split(' ');
-                expect(classes.length).toBeGreaterThan(0);
-                expect(classes[0]).toBe('todo-state-active');
-            });
+
+            let classNames = await menu.getActiveButtonClass();
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBeGreaterThan(0);
+            expect(classes[0]).toBe('todo-state-active');
+
+            done();
         });
-        it('should be selected by default', () => {
+        it('should be selected by default', async (done) => {
             page.navigateTo();
-            menu.getActiveButtonClass().then(classNames => {
-                let classes = classNames.split(' ');
-                expect(classes.length).toBe(2);
-                expect(classes[1]).toBe('todo-state-selected');
-            });
+
+            let classNames = await menu.getActiveButtonClass();
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBe(2);
+            expect(classes[1]).toBe('todo-state-selected');
+
+            done();
         });
-        it('should become active when clicked', () => {
+        it('should become active when clicked', async (done) => {
             page.navigateTo();
             //since Active is selected by default, select Completed first
-            menu.clickCompletedButton().then(() => {
-                menu.clickActiveButton().then(() => {
-                    menu.getActiveButtonClass().then(classNames => {
-                        let classes = classNames.split(' ');
-                        expect(classes.length).toBe(2);
-                        expect(classes[1]).toBe('todo-state-selected');
-                    });
-                });
-            });
+            await menu.clickCompletedButton();
+            await menu.clickActiveButton();
+
+            let classNames = await menu.getActiveButtonClass();
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBe(2);
+            expect(classes[1]).toBe('todo-state-selected');
+
+            done();
         });
-        it('should deactive Completed button when clicked', () => {
+        it('should deactive Completed button when clicked', async (done) => {
             page.navigateTo();
             //since Active is selected by default, select Completed first
-            menu.clickCompletedButton().then(() => {
-                menu.clickActiveButton().then(() => {
-                    menu.getCompletedButtonClass().then(classNames => {
-                        let classes = classNames.split(' ');
-                        expect(classes.length).toBe(1);
-                        expect(classNames).toBe('todo-state-completed');
-                    });
-                });
-            });
+            await menu.clickCompletedButton();
+            await menu.clickActiveButton();
+
+            let classNames = await menu.getCompletedButtonClass();
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBe(1);
+            expect(classNames).toBe('todo-state-completed');
+
+            done();
         });
     });
 
     describe('Completed Menu Item', () => {
-        it('should have Completed text', () => {
+        it('should have Completed text', async (done) => {
             page.navigateTo();
-            menu.getCompletedButtonText().then(text => {
-                expect(text).toBe('Completed');
-            });
+            expect(await menu.getCompletedButtonText()).toBe('Completed');
+            done();
         });
-        it('should be styled as todo-state-completed', () => {
+        it('should be styled as todo-state-completed', async (done) => {
             page.navigateTo();
-            menu.getCompletedButtonClass().then(classNames => {
-                let classes = classNames.split(' ');
-                expect(classes.length).toBeGreaterThan(0);
-                expect(classes[0]).toBe('todo-state-completed');
-            });
+
+            let classNames = await menu.getCompletedButtonClass();
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBeGreaterThan(0);
+            expect(classes[0]).toBe('todo-state-completed');
+
+            done();
         });
-        it('should not be active by default', () => {
+        it('should not be active by default', async (done) => {
             page.navigateTo();
-            menu.getCompletedButtonClass().then(classNames => {
-                expect(classNames).toBe('todo-state-completed');
-            });
+            expect(await menu.getCompletedButtonClass()).toBe('todo-state-completed');
+            done();
         });
-        it('should become active when clicked', () => {
+        it('should become active when clicked', async (done) => {
             page.navigateTo();
-            menu.clickCompletedButton().then(() => {
-                menu.getCompletedButtonClass().then(classNames => {
-                    let classes = classNames.split(' ');
-                    expect(classes.length).toBe(2);
-                    expect(classes[1]).toBe('todo-state-selected');
-                });
-            });
+            await menu.clickCompletedButton();
+
+            let classNames = await menu.getCompletedButtonClass()
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBe(2);
+            expect(classes[1]).toBe('todo-state-selected');
+
+            done();
         });
-        it('should deactive Active button when clicked', () => {
+        it('should deactive Active button when clicked', async (done) => {
             page.navigateTo();
-            menu.clickCompletedButton().then(() => {
-                menu.getActiveButtonClass().then(classNames => {
-                    let classes = classNames.split(' ');
-                    expect(classes.length).toBe(1);
-                    expect(classNames).toBe('todo-state-active');
-                });
-            });
+            await menu.clickCompletedButton();
+
+            let classNames = await menu.getActiveButtonClass();
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBe(1);
+            expect(classNames).toBe('todo-state-active');
+
+            done();
         });
     });
 
     describe('Add Menu Item', () => {
-        it('should have add text', () => {
+        it('should have add text', async (done) => {
             page.navigateTo();
-            menu.getAddButtonText().then(text => {
-                expect(text).toBe('+ New');
-            });
+            expect(await menu.getAddButtonText()).toBe('+ New');
+            done();
         });
-        it('should be styled as todo-add', () => {
+        it('should be styled as todo-add', async (done) => {
             page.navigateTo();
-            menu.getAddButtonClass().then(classNames => {
-                let classes = classNames.split(' ');
-                expect(classes.length).toBeGreaterThan(0);
-                expect(classes[0]).toBe('todo-add');
-            });
+
+            let classNames = await menu.getAddButtonClass();
+            let classes = classNames.split(' ');
+
+            expect(classes.length).toBeGreaterThan(0);
+            expect(classes[0]).toBe('todo-add');
+
+            done();
         });
-        it('should not be active by default', () => {
+        it('should not be active by default', async (done) => {
             page.navigateTo();
-            menu.getAddButtonClass().then(classNames => {
-                expect(classNames).toBe('todo-add');
-            });
+            expect(await menu.getAddButtonClass()).toBe('todo-add');
+            done();
         });
-        it('should add new item when clicked', () => {
+        it('should add new item when clicked', async (done) => {
             page.navigateTo();
-            page.removeAllTodos().then(() => {
-                menu.clickAddButton().then(() => {
-                    page.getTodoList().then(items => {
-                        expect(items.length).toBe(1);
-                        let item = items[0];
-                        expect(item).not.toBeNull();
-                    });
-                });
-            });
+            
+            await page.removeAllTodos();
+            await menu.clickAddButton();
+
+            let items = await page.getTodoList();
+
+            expect(items.length).toBe(1);
+            expect(items[0]).not.toBeNull();
+
+            done();
         });
     });
 });

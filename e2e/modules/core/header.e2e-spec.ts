@@ -10,20 +10,21 @@ describe('Core Header', () => {
         header = new Header();
     });
 
-    it('should provide a container', () => {
+    it('should provide a container', async (done) => {
         page.navigateTo();
-        expect(header.getContainer().isPresent()).toBe(true);
+        expect(await header.getContainer().isPresent()).toBe(true);
+        done();
     });
 
-    it('should provide a header', () => {
+    it('should provide a header', async (done) => {
         page.navigateTo();
-        expect(header.getHeader().isPresent()).toBe(true);
+        expect(await header.getHeader().isPresent()).toBe(true);
+        done();
     });
 
-    it('should contain default heading text', () => {
+    it('should contain default heading text', async (done) => {
         page.navigateTo();
-        header.getHeaderText().then(text => {
-            expect(text).toBe('NG2 MEAN: TODO');
-        });
+        expect(await header.getHeaderText()).toBe('NG2 MEAN: TODO');
+        done();
     });
 });
