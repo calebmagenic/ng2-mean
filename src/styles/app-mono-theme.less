@@ -1,0 +1,100 @@
+
+/*
+    [style]
+    - mono
+    [color]
+    - grey
+    - blue
+    - purple
+    - red
+    - brown
+    - green
+*/
+
+.generate-mono-grey-theme {
+    &.grey {
+        @default: rgba(255, 255, 255, 1);
+        @light: rgba(122, 122, 122, 1);
+
+        .generate-header-component(@default,@light);
+        .generate-monochrome-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-blue-theme {
+    &.blue {
+        @default: rgba(255, 255, 255, 1);
+        @light: rgba(76, 84, 140, 1);
+
+        .generate-header-component(@default,@light);
+        .generate-monochrome-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-purple-theme {
+    &.purple {
+        @default: rgba(255, 255, 255, 1);
+        @light: rgba(138, 106, 152, 1);
+
+        .generate-header-component(@default,@light);
+        .generate-monochrome-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-red-theme {
+    &.red {
+        @default: rgba(255, 255, 255, 1);
+        @light: rgba(140, 76, 84, 1);
+
+        .generate-header-component(@default,@light);
+        .generate-monochrome-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-brown-theme {
+    &.brown {
+        @default: rgba(255, 255, 255, 1);
+        @light: rgba(140, 84, 76, 1);
+
+        .generate-header-component(@default,@light);
+        .generate-monochrome-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-orange-theme {
+    &.orange {
+        @default: rgba(255, 255, 255, 1);
+        @light: rgba(176, 84, 40, 1);
+
+        .generate-header-component(@default,@light);
+        .generate-monochrome-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-green-theme {
+    &.green {
+        @default: rgba(255, 255, 255, 1);
+        @light: rgba(84, 140, 76, 1);
+
+        .generate-header-component(@default,@light);
+        .generate-monochrome-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-theme {
+    &.mono {         
+        .generate-mono-grey-theme();
+
+        .generate-mono-blue-theme();
+
+        .generate-mono-purple-theme();
+
+        .generate-mono-red-theme();
+
+        .generate-mono-brown-theme();
+
+        .generate-mono-orange-theme();
+
+        .generate-mono-green-theme();
+    }
+}

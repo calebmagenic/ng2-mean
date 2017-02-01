@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.themes = [];
-    this.theme = "theme mono gray";
+    this.theme = "theme mono grey";
     this.title = "NG2 MEAN: TODO";
-    this.addTheme('mono', ['gray','blue', 'purple', 'red', 'brown', 'orange', 'green']);
+    this.addTheme('mono', ['grey','blue', 'purple', 'red', 'brown', 'orange', 'green']);
   }
 
   addTheme(style: String, colors: String[]) {
