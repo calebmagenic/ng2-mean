@@ -7,13 +7,14 @@ import { HttpService } from './http/http.service';
 import { HeaderComponent } from './header/header.component';
 
 import { TodoModule } from '../todo/todo.module';
+import { ThemeComponent } from './theme/theme.component';
 
 @NgModule({
   imports: [
     CommonModule,
     TodoModule
   ],
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, ThemeComponent],
   exports: [HeaderComponent]
 })
 export class CoreModule {
