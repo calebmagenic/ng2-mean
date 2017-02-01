@@ -10,3 +10,23 @@
         color: @header-color-default;
     };
 }
+
+.generate-header-theme-skin() {
+    @header-theme-skin: {
+        background: transparent;
+    };
+}
+
+.generate-theme-skin() {
+    @theme-skin: {
+        background: transparent;
+    };
+
+    @theme-selector-skin: {
+        border-style: solid;
+        border-color: @header-color-dark;
+        color: @header-color-default;
+        background-color: @header-color-light;
+        box-shadow: inset 0 1px 1px @header-color-dark;
+    };
+}

@@ -1,0 +1,7 @@
+<div class="theme">
+  <select name="color" class="theme-selector" [(ngModel)]="color" (ngModelChange)="onChange($event)">
+    <option *ngFor="let color of theme.colors" [value]="color">
+      {{color}}
+    </option>
+  </select>
+</div>
