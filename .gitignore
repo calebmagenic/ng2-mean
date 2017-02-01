@@ -32,5 +32,15 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
-data/db/
+
 output/
+
+#mongo
+data/db/diagnostic.data
+data/db/journal
+data/db/*.wt
+data/db/*.lock
+data/db/*bson
+data/db/WiredTiger
+data/db/WiredTiger.*
+data/db/WiredTigerLAS.*
