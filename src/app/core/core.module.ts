@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HttpServiceConfig } from './http/http.service.config';
 import { HttpService } from './http/http.service';
@@ -12,6 +13,7 @@ import { ThemeComponent } from './theme/theme.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     TodoModule
   ],
   declarations: [HeaderComponent, ThemeComponent],

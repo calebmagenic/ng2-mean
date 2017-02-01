@@ -3,6 +3,6 @@
     {{text}}
   </div>
   <div class="header-theme">
-    <app-theme></app-theme>
+    <app-theme [themes]="themes" (onThemeChanged)="handleThemeChanged($event)"></app-theme>
   </div>
 </div>

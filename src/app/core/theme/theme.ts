@@ -5,3 +5,8 @@ export class Theme {
         public colors: String[]
         ) { }
 }
+
+export class ThemeSelection {
+    name: String;
+    color: String;
+}

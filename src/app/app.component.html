@@ -1,4 +1,4 @@
 <div class="app {{theme}}">
-  <app-header [text]="title"></app-header>
+  <app-header [text]="title" [themes]="themes" (onThemeChanged)="handleThemeChanged($event)"></app-header>
   <router-outlet></router-outlet>
 </div>
