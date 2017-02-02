@@ -1,11 +1,15 @@
 import { browser, element, by, promise, ElementFinder } from 'protractor';
 
+import { BasePage } from '../../testing/base-page.po';
+
 import { TodoItem } from './todo.po';
 import { TodoDetail } from './todo-detail.po';
 import { TodoStateMenu } from './todo-state-menu.po';
 
-export class TodoList {
+export class TodoList extends BasePage {
     constructor() {
+        super('.todo-list-container', '/list');
+
         this.todoMenu = new TodoStateMenu();
         this.todoDetail = new TodoDetail();
         this.todoList = [];
@@ -15,24 +19,16 @@ export class TodoList {
     private todoDetail: TodoDetail;
     private todoList: TodoItem[];
 
-    navigateTo() {
-        return browser.get('/list');
-    }
-
-    getContainer() {
-        return element(by.css('.todo-list-container'));
-    }
-
     getTodoListContainer() {
-        return this.getContainer().element(by.css('.todo-list'));
+        return this.get('.todo-list', this.getContainer());
     }
 
     getTodoListGroup() {
-        return this.getTodoListContainer().element(by.css('.todo-list-group'));
+        return this.get('.todo-list-group', this.getTodoListContainer());
     }
 
     getTodoDetailPane() {
-        return this.getContainer().element(by.css('.todo-detail-pane'));
+        return this.get('.todo-detail-pane', this.getContainer());
     }
 
     getTodoStateMenu(): TodoStateMenu {

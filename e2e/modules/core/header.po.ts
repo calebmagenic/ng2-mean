@@ -1,15 +1,31 @@
-import { browser, element, by, promise, ElementFinder,  } from 'protractor';
+import { browser, element, by, promise, ElementFinder  } from 'protractor';
 
-export class Header {
-    getContainer() {
-        return element(by.css('.header'));
+import { BaseComponent } from '../../testing/base-component.po';
+
+import { AppTheme } from './theme.po';
+
+export class Header extends BaseComponent {
+    constructor() {
+        super('.header');
     }
 
-    getHeader() {
-        return this.getContainer().element(by.css('.header-text'));
+    getHeader(): ElementFinder {
+        return this.get('.header-text', this.getContainer());
     }
 
-    getHeaderText() {
-        return this.getHeader().getText();
+    getHeaderText(): promise.Promise<string> {
+        return this.getText(this.getHeader());
+    }
+
+    getHeaderTheme(): ElementFinder {
+        return this.get('.header-theme', this.getContainer());
+    }
+
+    getAppTheme(): ElementFinder {
+        return this.get('app-theme', this.getHeaderTheme());
+    }
+
+    getAppThemeObject(): AppTheme {
+        return new AppTheme();
     }
 }

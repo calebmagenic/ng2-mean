@@ -1,27 +1,29 @@
 import { browser, element, by, promise, ElementFinder } from 'protractor';
 
-export class TodoDetail {
-    getContainer() {
-        return element(by.css('.todo-detail'));
+import { BaseComponent } from '../../testing/base-component.po';
+
+export class TodoDetail extends BaseComponent {
+    constructor() {
+        super('.todo-detail');
     }
 
     getHeader() {
-        return this.getContainer().element(by.css('.todo-detail-header'));
+        return this.get('.todo-detail-header', this.getContainer());
     }
 
     getHeaderText() {
-        return this.getHeader().getText();
+        return this.getText(this.getHeader());
     }
 
     getDescriptionContainer() {
-        return this.getContainer().element(by.css('.todo-description'));
+        return this.get('.todo-description', this.getContainer());
     }
 
     getDescription() {
-        return this.getDescriptionContainer().element(by.css('.todo-description-text'));
+        return this.get('.todo-description-text', this.getDescriptionContainer());
     }
 
     getDescriptionText() {
-        return this.getDescription().getText();
+        return this.getText(this.getDescription());
     }
 }

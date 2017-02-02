@@ -1,45 +1,48 @@
 import { browser, element, by, promise, ElementFinder } from 'protractor';
 
-export class TodoStateMenu {
-    getContainer() {
-        return element(by.css('.todo-state-menu'));
+import { BaseComponent } from '../../testing/base-component.po';
+
+export class TodoStateMenu extends BaseComponent {
+    constructor() {
+        super('.todo-state-menu');
     }
 
     getActiveButton() {
-        return this.getContainer().element(by.css('.todo-state-active'));
+        return this.get('.todo-state-active', this.getContainer());
     }
 
     getActiveButtonText() {
-        return this.getActiveButton().getText();
+        return this.getText(this.getActiveButton());
     }
 
     getActiveButtonClass() {
-        return this.getActiveButton().getAttribute("class");
+        return this.getClass(this.getActiveButton());
     }
 
     getCompletedButton() {
-        return this.getContainer().element(by.css('.todo-state-completed'));
+        return this.get('.todo-state-completed', this.getContainer());
     }
 
     getCompletedButtonText() {
-        return this.getCompletedButton().getText();
+        return this.getText(this.getCompletedButton());
     }
 
     getCompletedButtonClass() {
-        return this.getCompletedButton().getAttribute("class");
+        return this.getClass(this.getCompletedButton());
     }
 
     getAddButton() {
-        return this.getContainer().element(by.css('.todo-add'));
+        return this.get('.todo-add', this.getContainer());
     }
 
     getAddButtonText() {
-        return this.getAddButton().getText();
+        return this.getText(this.getAddButton());
     }
 
     getAddButtonClass() {
-        return this.getAddButton().getAttribute("class");
+        return this.getClass(this.getAddButton());
     }
+    
 
     clickActiveButton() {
         return this.getActiveButton().click();

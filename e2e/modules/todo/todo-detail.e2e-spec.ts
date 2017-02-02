@@ -11,43 +11,41 @@ describe('Todo Detail', () => {
     let description: string = 'New test item description';
     let defaultDescription: string = 'Please select or create a todo.';
 
-    beforeEach(() => {
+    beforeEach(async (done) => {
         page = new TodoList();
         detail = page.getTodoDetail();
+
+        await page.navigateTo();
+
+        done();
     });
 
     it("should provide a container", async (done) => {
-        page.navigateTo();
         expect(await detail.getContainer().isPresent()).toBe(true);
         done();
     });
 
     it("should provide a header", async (done) => {
-        page.navigateTo();
         expect(await detail.getHeader().isPresent()).toBe(true);
         done();
     });
 
     it("should provide a description", async (done) => {
-        page.navigateTo();
         expect(await detail.getDescriptionContainer().isPresent()).toBe(true);
         done();
     });
 
     it("should provide description text", async (done) => {
-        page.navigateTo();
         expect(await detail.getDescription().isPresent()).toBe(true);
         done();
     });
 
     it("should set the header text", async (done) => {
-        page.navigateTo();
         expect(await detail.getHeaderText()).toBe(detailHeader);
         done();
     });
 
     it('should set default description text', async (done) => {
-        page.navigateTo();
         await page.removeAllTodos();
 
         let text = await detail.getDescriptionText();
@@ -65,7 +63,6 @@ describe('Todo Detail', () => {
         });
 
         it("should set the description text", async (done) => {
-            page.navigateTo();
             expect(await detail.getDescriptionText()).toBe(description);
             done();
         });
