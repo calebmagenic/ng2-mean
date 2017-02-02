@@ -1,31 +1,31 @@
 import { browser, element, by, promise, ElementFinder } from 'protractor';
 
-export class AppPage {
-  navigateTo() {
-    return browser.get('/');
-  }
+import { BasePage } from '../../testing/base-page.po';
 
-  getTitle(): promise.Promise<String> {
-    return browser.getTitle();
-  }
+import { Header } from '../core/header.po';
 
-  getContainer(): ElementFinder {
-    return element(by.css("app-root > div"));
+export class AppPage extends BasePage {
+  constructor() {
+    super('app-root > div', '/');
   }
 
   getContainerClass(): promise.Promise<String> {
-    return this.getContainer().getAttribute("class");
+    return this.getClass(this.getContainer());
   }
 
   getAppHeader(): ElementFinder {
-    return element(by.css("app-header"));
+    return this.get("app-header", this.getContainer());
   }
 
-  getAppHeaderText(): promise.Promise<String> {
-    return this.getAppHeader().getAttribute("ng-reflect-text");
+  getAppHeaderBinding(): promise.Promise<String> {
+    return this.getBinding("text", this.getAppHeader());
   }
 
   getRouterOutlet(): ElementFinder {
-    return element(by.css("router-outlet"));
+    return this.get("router-outlet", this.getContainer());
+  }
+
+  getHeaderObject(): Header {
+    return new Header();
   }
 }

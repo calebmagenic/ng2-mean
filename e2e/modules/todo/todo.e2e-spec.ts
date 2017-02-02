@@ -9,8 +9,8 @@ describe('Todo Item', () => {
 
     beforeEach(async (done) => {
         page = new TodoList();
-        page.navigateTo();
-
+        
+        await page.navigateTo();
         await page.removeAllTodos();
         await page.saveNewTodo(text, description);
 
