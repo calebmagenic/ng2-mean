@@ -7,7 +7,9 @@
     - blue
     - purple
     - red
+    - pink
     - brown
+    - orange
     - green
 */
 
@@ -16,8 +18,8 @@
         @default: rgba(255, 255, 255, 1);
         @light: rgba(122, 122, 122, 1);
 
-        .generate-header-component(@default,@light);
-        .generate-monochrome-todo-component(@default,@light, 50%);
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 50%);
     }
 }
 
@@ -26,8 +28,8 @@
         @default: rgba(255, 255, 255, 1);
         @light: rgba(76, 84, 140, 1);
 
-        .generate-header-component(@default,@light);
-        .generate-monochrome-todo-component(@default,@light, 50%);
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 50%);
     }
 }
 
@@ -36,8 +38,8 @@
         @default: rgba(255, 255, 255, 1);
         @light: rgba(138, 106, 152, 1);
 
-        .generate-header-component(@default,@light);
-        .generate-monochrome-todo-component(@default,@light, 50%);
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 50%);
     }
 }
 
@@ -46,8 +48,8 @@
         @default: rgba(255, 255, 255, 1);
         @light: rgba(140, 76, 84, 1);
 
-        .generate-header-component(@default,@light);
-        .generate-monochrome-todo-component(@default,@light, 50%);
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 50%);
     }
 }
 
@@ -56,8 +58,8 @@
         @default: rgba(255, 255, 255, 1);
         @light: rgba(140, 84, 76, 1);
 
-        .generate-header-component(@default,@light);
-        .generate-monochrome-todo-component(@default,@light, 50%);
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 50%);
     }
 }
 
@@ -66,8 +68,8 @@
         @default: rgba(255, 255, 255, 1);
         @light: rgba(176, 84, 40, 1);
 
-        .generate-header-component(@default,@light);
-        .generate-monochrome-todo-component(@default,@light, 50%);
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 50%);
     }
 }
 
@@ -76,8 +78,18 @@
         @default: rgba(255, 255, 255, 1);
         @light: rgba(84, 140, 76, 1);
 
-        .generate-header-component(@default,@light);
-        .generate-monochrome-todo-component(@default,@light, 50%);
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 50%);
+    }
+}
+
+.generate-mono-pink-theme {
+    &.pink {
+        @default: rgba(0,0,0,1);
+        @light: rgba(255, 115, 172, 1);
+
+        .generate-mono-header-component(@default,@light);
+        .generate-mono-todo-component(@default,@light, 30%);
     }
 }
 
@@ -96,5 +108,7 @@
         .generate-mono-orange-theme();
 
         .generate-mono-green-theme();
+
+        .generate-mono-pink-theme();
     }
 }
