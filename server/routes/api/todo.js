@@ -1,12 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Todo = require('../../data/models/Todo');
-
-router.all(function (req, res, next) {
-    console.log("REQUEST: " + req);
-    next();
-});
+const Todo = require('../../data/schema/Todo');
 
 // GET: /api/todo
 router.get('/', function (req, res) {

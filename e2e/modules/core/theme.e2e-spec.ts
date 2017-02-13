@@ -21,7 +21,7 @@ describe('App Theme', () => {
         expect(await appTheme.getContainer().isPresent()).toBe(true);
         expect(await appTheme.getThemeSelector().isPresent()).toBe(true);
         expect(await appTheme.getThemeSelectorName()).toBe(expectedName);
-        expect(await appTheme.getThemeOptions().count()).toBe(7);
+        expect(await appTheme.getThemeOptions().count()).toBe(8);
 
         done();
     });
@@ -44,6 +44,7 @@ describe('App Theme', () => {
         expect(await appTheme.getThemeOptionBinding(4)).toBe('brown');
         expect(await appTheme.getThemeOptionBinding(5)).toBe('orange');
         expect(await appTheme.getThemeOptionBinding(6)).toBe('green');
+        expect(await appTheme.getThemeOptionBinding(7)).toBe('pink');
 
         done();
     });
@@ -56,6 +57,7 @@ describe('App Theme', () => {
         expect(await appTheme.getThemeOptionValue(4)).toBe('brown');
         expect(await appTheme.getThemeOptionValue(5)).toBe('orange');
         expect(await appTheme.getThemeOptionValue(6)).toBe('green');
+        expect(await appTheme.getThemeOptionValue(7)).toBe('pink');
 
         done();
     });
@@ -68,6 +70,7 @@ describe('App Theme', () => {
         expect(await appTheme.getThemeOptionText(4)).toBe('brown');
         expect(await appTheme.getThemeOptionText(5)).toBe('orange');
         expect(await appTheme.getThemeOptionText(6)).toBe('green');
+        expect(await appTheme.getThemeOptionValue(7)).toBe('pink');
 
         done();
     });
@@ -118,6 +121,13 @@ describe('App Theme', () => {
         it('should set green theme', async (done) => {
             let color: string = 'green';
             expect(await appTheme.getNewBindingValue(6)).toBe(color);
+            expect(await page.getContainerClass()).toBe(`app theme mono ${color}`);
+
+            done();
+        });
+        it('should set pink theme', async (done) => {
+            let color: string = 'pink';
+            expect(await appTheme.getNewBindingValue(7)).toBe(color);
             expect(await page.getContainerClass()).toBe(`app theme mono ${color}`);
 
             done();
