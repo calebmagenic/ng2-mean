@@ -21,17 +21,33 @@ export class ThemeComponent implements OnInit {
   color: String;
 
   ngOnInit() {
-    if(this.themes && this.themes.length) {
-      this.theme = this.themes[0]; //default to the first one
+    if(this.hasThemes()) {
+      this.theme = this.themes[0];
     } else {
-      this.theme = new Theme('default', ['default']);
+      this.theme = this.getDefaultTheme();
     }
 
-    if(this.theme.colors && this.theme.colors.length) {
+    if(this.hasThemeColors()) {
       this.color = this.theme.colors[0];
     } else {
-      this.color = 'default';
+      this.color = this.getDefaultColor();
     }
+  }
+
+  getDefaultTheme(): Theme {
+    return new Theme('default', ['default']);
+  }
+
+  getDefaultColor(): string {
+    return 'default';
+  }
+
+  hasThemes(): boolean {
+    return !!(this.themes && this.themes.length);
+  }
+
+  hasThemeColors(): boolean {
+    return !!(this.theme && this.theme.colors && this.theme.colors.length);
   }
 
   onChange(theme: Theme) {
