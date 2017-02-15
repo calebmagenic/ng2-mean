@@ -33,14 +33,14 @@ Run mongo
 $ npm run mongo
 ```
 
-Run the server
+Run the api server
 ```bash
-$ npm run build
+$ npm run api
 ```
 
 Run the web app
 ```bash
-$ npm run start
+$ npm run app
 ```
 
 ## Run E2E Tests
@@ -49,9 +49,14 @@ Run mongo
 $ npm run mongo
 ```
 
-Run the server
+Run the api server
 ```bash
-$ npm run build
+$ npm run api
+```
+
+Run the web app
+```bash
+$ npm run app
 ```
 
 Run the e2e tests

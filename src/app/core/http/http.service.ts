@@ -3,12 +3,27 @@ import { Headers, Http, RequestOptions, URLSearchParams, RequestMethod } from '@
 
 import 'rxjs/add/operator/toPromise';
 
+import { environment } from '../../../environments/environment';
 import { HttpServiceConfig } from './http.service.config';
 
 @Injectable()
 export class HttpService {
     constructor(private http: Http, private config: HttpServiceConfig) {
+        this.setDefaults();
+    }
 
+    private setDefaults() {
+        if(!environment || !environment.apiConfig) {
+            return;
+        }
+
+        let apiConfig = environment.apiConfig;
+
+        Object.keys(apiConfig).forEach(key => {
+            if(!this.config.hasOwnProperty(key)) {
+                this.config[key] = apiConfig[key];
+            }
+        });
     }
 
     protected get<TResponse>(action: string, params?: URLSearchParams): Promise<TResponse> {

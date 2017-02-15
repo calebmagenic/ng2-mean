@@ -11,9 +11,7 @@ export class TodoService extends HttpService {
 
   constructor(private client: Http) {
     super(client, {
-      baseUrl: "http://localhost:3000/api/",
-      controller: "todo",
-      headers: new Headers({'Content-Type': 'application/json'})
+      controller: "todo"
     });
   }
 
