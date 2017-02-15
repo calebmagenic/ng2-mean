@@ -1,8 +1,6 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
-import { TodoService } from '../services/todo.service';
 import { Todo } from '../services/todo';
 
 @Component({
@@ -10,9 +8,11 @@ import { Todo } from '../services/todo';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.less']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
 
-  constructor() { }
+  constructor() {
+    this.todo = Todo.Empty;
+  }
 
   @Input()
   todo: Todo;
@@ -33,9 +33,6 @@ export class TodoComponent implements OnInit {
 
   @Input()
   editMode: Boolean = false;
-
-  ngOnInit() {
-  }
 
   select($event) {
     this.onSelect.emit(this.todo);

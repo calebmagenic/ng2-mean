@@ -4,4 +4,8 @@ export class Todo {
                 public text: string,
                 public description: string,
                 public done: boolean) {}
+
+    static get Empty() {
+        return new Todo("", "", "", false);
+    }
 }

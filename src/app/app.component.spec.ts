@@ -1,8 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { By, BrowserModule } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { RouterOutletStubComponent } from '../testing/router-stubs';
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -11,7 +13,8 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppComponent ]
+      imports: [ BrowserModule, CoreModule ],
+      declarations: [ AppComponent, RouterOutletStubComponent ]
     })
     .compileComponents();
   }));

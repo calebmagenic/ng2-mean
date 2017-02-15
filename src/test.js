@@ -8,16 +8,16 @@ import 'zone.js/dist/async-test';
 import 'zone.js/dist/fake-async-test';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
-declare var __karma__: any;
-declare var require: any;
+// declare var __karma__: any;
+// declare var require: any;
 
 // Prevent Karma from running prematurely.
 __karma__.loaded = function () {};
 
 
 Promise.all([
-  System.import('@angular/core/testing'),
-  System.import('@angular/platform-browser-dynamic/testing')
+  require('@angular/core/testing'),
+  require('@angular/platform-browser-dynamic/testing')
 ])
   // First, initialize the Angular testing environment.
   .then(([testing, testingBrowser]) => {
