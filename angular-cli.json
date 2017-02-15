@@ -13,7 +13,7 @@
       ],
       "index": "index.html",
       "main": "main.ts",
-      "test": "test.ts",
+      "test": "test.js",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "mobile": false,

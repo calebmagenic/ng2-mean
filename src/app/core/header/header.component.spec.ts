@@ -2,7 +2,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
+import { ThemeComponent } from '../theme/theme.component';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -11,7 +13,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      imports: [ FormsModule ],
+      declarations: [ HeaderComponent, ThemeComponent ]
     })
     .compileComponents();
   }));

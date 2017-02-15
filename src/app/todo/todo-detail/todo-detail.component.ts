@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input } from '@angular/core';
 
-import { TodoService } from '../services/todo.service';
 import { Todo } from '../services/todo';
 
 @Component({
@@ -9,19 +7,14 @@ import { Todo } from '../services/todo';
   templateUrl: './todo-detail.component.html',
   styleUrls: ['./todo-detail.component.less']
 })
-export class TodoDetailComponent implements OnInit {
+export class TodoDetailComponent {
 
-  constructor(private route: ActivatedRoute, private service: TodoService) { }
+  constructor() { }
 
   @Input()
   todo: Todo;
 
   @Input()
   header: String;
-
-  ngOnInit() {
-  }
-
-  
 
 }
